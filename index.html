@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1 class="title">Image slider</h1>
+      <section class="wrapper">
+        <ul class="carousel" draggable="false">
+          <li class="card">
+            <img src="./img-1.jpg" alt="" />
+          </li>
+          <li class="card">
+            <img src="./img-1.jpg" alt="" />
+          </li>
+          <li class="card">
+            <img src="./img-1.jpg" alt="" />
+          </li>
+          <li class="card">
+            <img src="./img-1.jpg" alt="" />
+          </li>
+          <li class="card">
+            <img src="./img-1.jpg" alt="" />
+          </li>
+          <li class="card">
+            <img src="./img-1.jpg" alt="" />
+          </li>
+          <li class="card">
+            <img src="./img-1.jpg" alt="" />
+          </li>
+        </ul>
+        <div class="btn-wrapper">
+          <button>Left</button><button>Right</button>
+        </div>
+      </section>
+    </main>
+    <script>
+      const carousel = document.querySelector(".carousel");
+      const btns = document.querySelectorAll("button");
+      const cardWidth = document.querySelector(".card").offsetWidth;
+      console.log(cardWidth);
+      let isDragging = false,
+        startX,
+        startScrollLeft;
+
+      btns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          carousel.scrollLeft +=
+            btn.innerText === "Left" ? -cardWidth : cardWidth;
+        });
+      });
+
+      function dragging(e) {
+        if (!isDragging) return;
+        carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+      }
+
+      function dragStart(e) {
+        isDragging = true;
+        carousel.classList.add("dragging");
+        startX = e.pageX;
+        startScrollLeft = carousel.scrollLeft;
+        console.log(e.pageX, e);
+      }
+
+      function dragStop(e) {
+        isDragging = false;
+        carousel.classList.remove("dragging");
+      }
+
+      carousel.addEventListener("mousedown", dragStart);
+      carousel.addEventListener("mousemove", dragging);
+      carousel.addEventListener("mouseup", dragStop);
+    </script>
+  </body>
+</html>

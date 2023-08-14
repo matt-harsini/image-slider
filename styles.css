@@ -1,0 +1,74 @@
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+img {
+  object-fit: cover;
+  pointer-events: none;
+  width: 350px;
+  height: 350px;
+}
+
+.title {
+  text-align: center;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.card {
+  height: 350px;
+  list-style: none;
+  scroll-snap-align: center;
+}
+
+.carousel {
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: center;
+  padding: 0;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  gap: 16px;
+  overflow: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.btn-wrapper {
+  display: flex;
+  margin-top: 32px;
+  justify-content: center;
+  column-gap: 12px;
+}
+
+.dragging {
+  cursor: grab;
+  user-select: none;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .carousel {
+    grid-auto-columns: calc((100% / 2) - 12px);
+    gap: 32px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .carousel {
+    grid-auto-columns: calc(100% - 12px);
+    gap: 48px;
+  }
+}
