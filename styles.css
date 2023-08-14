@@ -18,7 +18,8 @@ img {
 
 .wrapper {
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 1320px;
+  width: 100%;
 }
 
 .card {
@@ -32,8 +33,8 @@ img {
   grid-auto-flow: column;
   justify-items: center;
   padding: 0;
-  grid-auto-columns: calc((100% / 3) - 12px);
   gap: 16px;
+  grid-auto-columns: calc((100% / 3) - 12px);
   overflow: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -62,13 +63,11 @@ img {
 @media screen and (max-width: 1200px) {
   .carousel {
     grid-auto-columns: calc((100% / 2) - 12px);
-    gap: 32px;
   }
 }
 
 @media screen and (max-width: 750px) {
   .carousel {
     grid-auto-columns: calc(100% - 12px);
-    gap: 48px;
   }
 }
